@@ -1,9 +1,14 @@
-import 'package:campus_splitwise/constants.dart';
-import 'package:campus_splitwise/screens/chat_screen.dart';
+import 'package:cs_v3/constants.dart';
+import 'package:cs_v3/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:campus_splitwise/components/rounded_button.dart';
+import 'package:cs_v3/components/rounded_button.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
+import 'package:firebase_database/firebase_database.dart';
+import 'package:cs_v3/data/user.dart';
+import 'package:cs_v3/data/user_dao.dart';
+
+final userDao = UserDao();
 
 class RegistrationScreen extends StatefulWidget {
   static const String id = 'registration';
@@ -14,8 +19,10 @@ class RegistrationScreen extends StatefulWidget {
 class _RegistrationScreenState extends State<RegistrationScreen> {
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
-  String email;
-  String password;
+  String email="";
+  String password="";
+  String Uname="";
+  String Phnum="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +48,44 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 48.0,
               ),
               TextField(
+                keyboardType: TextInputType.name,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  Uname = value;
+                },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your name'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
+                keyboardType: TextInputType.phone,
+                textAlign: TextAlign.center,
+                onChanged: (value) {
+                  Phnum = value;
+                },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
+                decoration:
+                    kTextFieldDecoration.copyWith(hintText: 'Enter your phone no.'),
+              ),
+              SizedBox(
+                height: 8.0,
+              ),
+              TextField(
                 keyboardType: TextInputType.emailAddress,
                 textAlign: TextAlign.center,
                 onChanged: (value) {
                   email = value;
                 },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
@@ -58,6 +98,9 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 onChanged: (value) {
                   password = value;
                 },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
                 decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Enter your password'),
               ),
@@ -65,7 +108,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                onPressed: () async {
+                onPressed1: () async {
                   setState(() {
                     showSpinner = true;
                   });
@@ -73,14 +116,18 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                     final newUser = await _auth.createUserWithEmailAndPassword(
                         email: email, password: password);
                     if (newUser != null) {
+                      final usr = UserProfile(Uname, Phnum, email);
+                      userDao.saveUser(usr);
+                      // setState(() {});
                       Navigator.pushNamed(context, ChatScreen.id);
                     }
-                    setState(() {
-                      showSpinner = false;
-                    });
+                    
                   } catch (e) {
                     print(e);
                   }
+                  setState(() {
+                      showSpinner = false;
+                  });
                 },
                 colour: Colors.deepPurpleAccent,
                 title: 'Register',

@@ -1,19 +1,47 @@
-import 'package:campus_splitwise/screens/login.dart';
-import 'package:campus_splitwise/screens/registration.dart';
+import 'package:cs_v3/screens/login.dart';
+import 'package:cs_v3/screens/registration.dart';
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-import 'package:campus_splitwise/components/rounded_button.dart';
+import 'package:cs_v3/components/rounded_button.dart';
 
 class WelcomeScreen extends StatefulWidget {
+  // WelcomeScreen({Key? key}) : super(key: key);
   static const String id = 'welcome';
   @override
   _WelcomeScreenState createState() => _WelcomeScreenState();
 }
-
+// class _WelcomeScreenState extends State<WelcomeScreen>{
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       body: Padding(
+//         padding: EdgeInsets.symmetric(horizontal: 24.0),
+//         child: Column(
+//             children: <Widget>[
+//           RoundedButton(
+//               title: 'Log In',
+//               colour: Colors.deepPurpleAccent,
+//               onPressed: (){
+//                 // Navigator.pushNamed(context, LoginScreen.id);
+//                 print("hi login");
+//               },
+//             ),
+//             RoundedButton(
+//               title: 'Registerme',
+//               colour: Colors.deepPurple,
+//               onPressed: (){
+//                 print("done");
+//                 Navigator.pushNamed(context, RegistrationScreen.id);
+//               },
+//             ),
+//               ],
+//       ),),
+//     );
+// }}
 class _WelcomeScreenState extends State<WelcomeScreen>
     with SingleTickerProviderStateMixin {
-  AnimationController controller;
-  Animation animation;
+  late AnimationController controller;
+  late Animation animation;
   @override
   void initState() {
     super.initState();
@@ -54,6 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                   child: Container(
                     child: Image.asset('images/logo.png'),
                     height: 60.0,
+                    width:30.0,
                   ),
                 ),
                 TypewriterAnimatedTextKit(
@@ -69,17 +98,21 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
+            // TextButton(onPressed: (){Navigator.pushNamed(context, LoginScreen.id);}, child: Text("Login")),
+            // TextButton(onPressed: (){Navigator.pushNamed(context, RegistrationScreen.id);}, child: Text("register")),
             RoundedButton(
               title: 'Log In',
               colour: Colors.deepPurpleAccent,
-              onPressed: () {
+              onPressed1: (){
                 Navigator.pushNamed(context, LoginScreen.id);
+                // print("hi login bye login");
               },
             ),
             RoundedButton(
-              title: 'Register',
+              title: 'Registerme',
               colour: Colors.deepPurple,
-              onPressed: () {
+              onPressed1: (){
+                // print("done");
                 Navigator.pushNamed(context, RegistrationScreen.id);
               },
             ),

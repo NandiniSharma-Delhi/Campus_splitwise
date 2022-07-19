@@ -8,5 +8,7 @@ class AllGroupsScreen extends StatefulWidget {
 
 class _AllGroupsScreenState extends State<AllGroupsScreen> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }

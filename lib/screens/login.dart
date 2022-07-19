@@ -1,7 +1,7 @@
-import 'package:campus_splitwise/screens/chat_screen.dart';
+import 'package:cs_v3/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:campus_splitwise/components/rounded_button.dart';
-import 'package:campus_splitwise/constants.dart';
+import 'package:cs_v3/components/rounded_button.dart';
+import 'package:cs_v3/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 
@@ -14,8 +14,8 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final _auth = FirebaseAuth.instance;
   bool showSpinner = false;
-  String email;
-  String password;
+  String email="";
+  String password="";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,6 +46,9 @@ class _LoginScreenState extends State<LoginScreen> {
                 onChanged: (value) {
                   email = value;
                 },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
                 decoration:
                     kTextFieldDecoration.copyWith(hintText: 'Enter your email'),
               ),
@@ -59,6 +62,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   password = value;
                   //Do something with the user input.
                 },
+                style: TextStyle(
+                  color: Color.fromARGB(255, 156, 158, 159),
+                ),
                 decoration: kTextFieldDecoration.copyWith(
                     hintText: 'Enter your password'),
               ),
@@ -66,7 +72,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 height: 24.0,
               ),
               RoundedButton(
-                onPressed: () async {
+                onPressed1: () async {
                   setState(() {
                     showSpinner = true;
                   });

@@ -8,5 +8,7 @@ class NewPaymentScreen extends StatefulWidget {
 
 class _NewPaymentScreenState extends State<NewPaymentScreen> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    return Container();
+  }
 }
