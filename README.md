@@ -6,10 +6,11 @@ this is an ongoing project for Payment splitting app for going keeping track of 
 
 Tech Stack used: Flutter, Firebase
 
-<div style="width:60px ; height:150px">
+<!-- <div style="width:60px ; height:150px">
 ![Employee data](/screenshots/image1.jpeg?raw=true "app screenshots")
  </div>
  <div style="width:60px ; height:150px">
 ![Employee data](/screenshots/image2.jpeg?raw=true "app screenshots")
-  </div>
+  </div> -->
+  <img src="/screenshots/image2.jpeg" style=" width:60px ; height:150px "  >
 
