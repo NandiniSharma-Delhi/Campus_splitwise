@@ -12,6 +12,6 @@ Tech Stack used: Flutter, Firebase
  <div style="width:60px ; height:150px">
 ![Employee data](/screenshots/image2.jpeg?raw=true "app screenshots")
   </div> -->
-  <img src="/screenshots/image1.jpeg" style=" width:100px ; height:300px "  >
-  <img src="/screenshots/image2.jpeg" style=" width:100px ; height:300px "  >
+  <img src="/screenshots/image1.jpeg" style=" width:300px ; height:900px "  >
+  <img src="/screenshots/image2.jpeg" style=" width:300px ; height:900px "  >
 
